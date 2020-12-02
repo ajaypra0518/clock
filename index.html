@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(214, 214, 214);
+        }
+
+        .main {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 5px 5px 10px#b6a9a9, -5px -5px 10px#b6a9a9;
+
+        }
+
+        .clock {
+            width: 40vw;
+            height: 40vw;
+            position: relative;
+
+        }
+
+        .common {
+            position: absolute;
+            height: 35vw;
+            font-size: 2vw;
+        }
+
+        #id1 {
+            transform: rotate(30deg);
+        }
+
+        #id2 {
+            transform: rotate(60deg);
+        }
+        #id3 {
+            transform: rotate(90deg);
+        }
+        #id4 {
+            transform: rotate(120deg);
+        }
+        #id5 {
+            transform: rotate(150deg);
+        }
+        #id6 {
+            transform: rotate(180deg);
+          
+            
+        }
+        #id7 {
+            transform: rotate(210deg);
+        }
+        #id8 {
+            transform: rotate(240deg);
+        }
+        #id9 {
+            transform: rotate(270deg);
+        }
+        #id10 {
+            transform: rotate(300deg);
+        }
+        #id11 {
+            transform: rotate(330deg);
+        }
+        #id12{
+            transform: rotate(360deg);
+        }
+
+        .numb {
+            position: absolute;
+            left: 47%;
+            top: 5.6%;
+            /* transform: translate(-50%, -50%); */
+        }
+        .clock::after{
+            content: "";
+            width: 2vw;
+            height: 2vw;
+            background-color: #b6a9a9;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+        }
+
+        #second{
+            left: 50%;
+            top:50%;
+            height: 14vw;
+            width: .15vw;
+            background-color: red;
+            position: absolute;
+            transform-origin:top;
+            transform :rotate(180deg);
+           
+           
+        }
+
+        #minute{
+            left: 50%;
+            top:50%;
+            height: 12.5vw;
+            width: .2vw;
+            background-color:black;
+            position: absolute;
+            transform-origin:top;
+            transform :rotate(180deg);
+        }
+
+        #hour{
+         
+            left: 49.8%;
+            top:50%;
+            height: 11vw;
+            width: .35vw;
+            background-color:black;
+            position: absolute;
+            transform-origin:top;
+            transform :rotate(180deg);
+            
+            
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="clock">
+           
+            <div class="numb">
+                <span class="common" id="id1">I</span>
+                <span class="common" id="id2">II</span>
+                <span class="common" id="id3">II</span>
+                <span class="common" id="id4"><p style="transform: rotate(180deg);">IV</p></span>
+                <span class="common" id="id5"><p style="transform: rotate(180deg);">V</p></span>
+                <span class="common" id="id6"><p style="transform: rotate(180deg);">VI</p></span>
+                <span class="common" id="id7"><p style="transform: rotate(180deg);">VII</p></span>
+                <span class="common" id="id8"><p style="transform: rotate(180deg);">VIII</p></span>
+                <span class="common" id="id9">IX</span>
+                <span class="common" id="id10">X</span>
+                <span class="common" id="id11">XI</span>
+                <span class="common" id="id">XII</span>
+            </div>
+
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function myclock(){
+        obj=new Date();
+        sec=obj.getSeconds();
+        min=obj.getMinutes();
+        hour=obj.getHours();
+        console.log(hour,min,sec)
+
+        // sec1=sec*6 +180;
+        sec1 = ((sec + obj.getMilliseconds()/1000) /60 * 360)+180; // this code is use for smooth effect in seconds
+
+        min1=min*6 +sec/10+180;
+        hour1=hour*30+min/2+180;
+        document.getElementById("second").style.transform=`rotate(${sec1}deg)`
+        document.getElementById("minute").style.transform=`rotate(${min1}deg)`
+        document.getElementById("hour").style.transform=`rotate(${hour1}deg)`
+     
+    }
+    setInterval(myclock,1);
+
+    // var sec = ( sec + date.getMilliseconds()/1000) /60 * 360;
+
+</script>
+
+</html>
