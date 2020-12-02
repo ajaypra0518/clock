@@ -135,6 +135,14 @@
             
             
         }
+        #diclock{
+            position: absolute;
+            left: 38.6%;
+            top: 20%;
+            font-size: 2.6vw;
+            color:black;
+        }
+
         
 
     </style>
@@ -144,7 +152,7 @@
     <div class="main">
 
         <div class="clock">
-           
+            <div id="diclock"></div>
             <div class="numb">
                 <span class="common" id="id1">I</span>
                 <span class="common" id="id2">II</span>
@@ -183,6 +191,9 @@
         document.getElementById("second").style.transform=`rotate(${sec1}deg)`
         document.getElementById("minute").style.transform=`rotate(${min1}deg)`
         document.getElementById("hour").style.transform=`rotate(${hour1}deg)`
+
+        arr=Date().split(" ");
+        document.getElementById("diclock").innerText=arr[4];
      
     }
     setInterval(myclock,1);
